@@ -15,6 +15,8 @@
     <title>Mauricio Hiroshi Yamada | Cirurgia Vascular</title>
     <meta name="description" content="Mauricio Hiroshi Yamada - Cirurgia Vascular e Estética a Laser em Maringá. CRM-PR 21589.">
     <link rel="shortcut icon" href="logo.jpg" type="image/jpeg">
+
+    <link rel="preload" as="image" href="foto.jpg">
     
     <style>
         :root {
@@ -123,10 +125,12 @@
         .btn-main:hover { background-color: #22c55e; }
 
         .profile-pic {
+            /* Tamanho fixo no CSS para garantir consistência */
             width: 180px;
-            height: auto;
+            height: auto; /* Mantém a proporção correta baseada na largura */
             display: block;
             margin: 35px auto 15px auto;
+            border-radius: 8px; /* Opcional: borda levemente arredondada */
         }
 
         .cv-section {
@@ -210,7 +214,7 @@
 
 <div class="container">
     <header>
-        <img src="logo.jpg" alt="Logo Clínica Vascular" class="logo">
+        <img src="logo.jpg" alt="Logo Clínica Vascular" class="logo" width="110" height="110">
         <h1>Mauricio Hiroshi Yamada</h1>
         <span class="crm">CRM-PR 21589</span>
         <span class="tag">Cirurgia Vascular e Estética a Laser</span>
@@ -234,7 +238,12 @@
         </a>
     </div>
 
-    <img src="foto.jpg" alt="Mauricio Hiroshi Yamada" class="profile-pic">
+    <img src="foto.jpg" 
+         alt="Mauricio Hiroshi Yamada" 
+         class="profile-pic" 
+         width="180" 
+         height="180" 
+         fetchpriority="high">
 
     <section class="cv-section">
         <h3>Experiência e Qualificações</h3>
