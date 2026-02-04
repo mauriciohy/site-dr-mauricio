@@ -9,8 +9,22 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-ZFLB3R64ZY'); // Google Analytics 4
-      gtag('config', 'AW-981205504'); // Google Ads (NOVO)
+      // Configuração do GA4 e Google Ads
+      gtag('config', 'G-ZFLB3R64ZY'); 
+      gtag('config', 'AW-981205504'); 
+
+      // --- FUNÇÃO DE RASTREAMENTO (A MÁGICA ACONTECE AQUI) ---
+      function trackWhatsApp() {
+          // Envia o sinal para o Google Analytics 4
+          gtag('event', 'generate_lead', {
+              'event_category': 'WhatsApp',
+              'event_label': 'Clique Agendamento',
+              'transport_type': 'beacon'
+          });
+
+          // Se você tiver o Rótulo de Conversão do Ads no futuro, adicione aqui
+          // gtag('event', 'conversion', {'send_to': 'AW-981205504/SEU_ROTULO_AQUI'});
+      }
     </script>
 
     <script>
@@ -70,9 +84,7 @@
             --text: #334155;
             --light-gray: #f8fafc;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg);
@@ -81,30 +93,25 @@
             justify-content: center;
             padding: 20px;
         }
-
         .container {
             width: 100%;
             max-width: 400px;
             text-align: center;
             padding-bottom: 60px;
         }
-
         .logo {
             width: 110px;
             height: auto;
             margin: 10px auto 15px auto;
             display: block;
         }
-
         header { margin-bottom: 25px; }
-
         h1 {
             font-size: 1.4rem;
             color: var(--primary);
             font-weight: 700;
             margin-bottom: 5px;
         }
-
         .crm {
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -114,7 +121,6 @@
             display: block;
             margin-bottom: 12px;
         }
-
         .tag {
             background: #f1f5f9;
             padding: 6px 16px;
@@ -125,13 +131,11 @@
             display: inline-block;
             border: 1px solid #e2e8f0;
         }
-
         .links-group {
             margin-top: 25px;
             display: grid;
             gap: 12px;
         }
-
         .btn {
             display: flex;
             align-items: center;
@@ -147,15 +151,14 @@
             color: var(--primary);
             position: relative;
             overflow: hidden;
+            cursor: pointer; /* Garante que pareça clicável */
         }
-
         .btn svg {
             width: 20px;
             height: 20px;
             margin-right: 10px;
             fill: currentColor;
         }
-
         .btn-main {
             background-color: var(--whatsapp);
             color: white;
@@ -163,19 +166,15 @@
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
             animation: pulse 2s infinite;
         }
-
         .btn-main svg { fill: white; }
-
         @keyframes pulse { 
             0% { transform: scale(1); } 
-            50% { transform: scale(1.05); } 
+            50% { transform: scale(1.03); } 
             100% { transform: scale(1); } 
         }
-
         .btn:active { transform: scale(0.97); }
         .btn:hover { background-color: #f1f5f9; }
         .btn-main:hover { background-color: #22c55e; }
-
         .profile-pic {
             width: 180px;
             height: auto;
@@ -183,7 +182,6 @@
             margin: 35px auto 15px auto;
             border-radius: 8px;
         }
-
         .cv-section {
             text-align: left;
             background: var(--light-gray);
@@ -191,7 +189,6 @@
             border-radius: 16px;
             border: 1px solid #e2e8f0;
         }
-
         .cv-section h3 {
             font-size: 0.9rem;
             color: var(--primary);
@@ -200,20 +197,17 @@
             border-bottom: 1px solid #cbd5e1;
             padding-bottom: 8px;
         }
-
         .cv-list {
             list-style: none;
             font-size: 0.85rem;
             line-height: 1.6;
             color: var(--text);
         }
-
         .cv-list li {
             margin-bottom: 10px;
             padding-left: 20px;
             position: relative;
         }
-
         .cv-list li::before {
             content: "•";
             color: var(--whatsapp);
@@ -223,7 +217,6 @@
             top: -2px;
             font-weight: bold;
         }
-
         footer {
             margin-top: 50px;
             padding-bottom: 30px;
@@ -231,7 +224,6 @@
             color: #94a3b8;
             font-weight: 500;
         }
-
         .floating-whatsapp {
             position: fixed;
             bottom: 25px;
@@ -249,7 +241,6 @@
             transition: transform 0.3s ease;
             animation: pulse 3s infinite;
         }
-
         .floating-whatsapp:hover { transform: scale(1.1); }
         .floating-icon { width: 32px; height: 32px; fill: white; }
     </style>
@@ -269,48 +260,18 @@ src="https://www.facebook.com/tr?id=2011007849113533&ev=PageView&noscript=1"
     </header>
 
     <div class="links-group">
-        <a href="https://wa.me/5544991297111?text=Ola!%20Consultorio%20do%20Dr.%20Mauricio%20Yamada?%20Poderia%20me%20ajudar?" class="btn btn-main">
+        <a href="https://wa.me/5544991297111?text=Ola!%20Consultorio%20do%20Dr.%20Mauricio%20Yamada?%20Poderia%20me%20ajudar?" 
+           class="btn btn-main" 
+           id="btn-whatsapp-agendar"
+           target="_blank" 
+           rel="noopener noreferrer"
+           onclick="trackWhatsApp()">
             <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.804 1.034 3.867 1.58 5.916 1.581h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
             Agendar Consulta
         </a>
         
-        <a href="https://www.google.com.br/maps/place/Mauricio+Hiroshi+Yamada+-+Cirurgia+Vascular+e+Est%C3%A9tica+a+Laser/@-23.4298069,-51.9560138,3052m/data=!3m1!1e3!4m6!3m5!1s0x94ecd723c226caeb:0x1b11379f29ae2ac!8m2!3d-23.426329!4d-51.944538!16s%2Fg%2F11clsg7bwr?entry=ttu&g_ep=EgoyMDI2MDEyOC4wIKXMDSoASAFQAw%3D%3D" class="btn" target="_blank">
-            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
-            Como Chegar (Maringá)
-        </a>
-        
-        <a href="https://share.google/l77J58t2xKzqtN5Mb" class="btn" target="_blank">
-            <svg viewBox="0 0 24 24"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z" fill="currentColor"/></svg>
-            Avaliações Google
-        </a>
-        
-        <a href="https://www.instagram.com/mauriciovascular/" class="btn" target="_blank">
-            <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z" fill="currentColor"/></svg>
-            Instagram
-        </a>
-    </div>
-
-    <img src="foto.jpg" alt="Mauricio Hiroshi Yamada" class="profile-pic" width="180" height="180" fetchpriority="high">
-
-    <section class="cv-section">
-        <h3>Experiência e Qualificações</h3>
-        <ul class="cv-list">
-            <li>Graduado em Medicina pela Universidade Estadual de Londrina (UEL).</li>
-            <li>Residência Médica em Cirurgia Vascular e Cirurgia Geral pelo HSPE/SP.</li>
-            <li>Área de Atuação em Angiorradiologia e Cirurgia Endovascular pelo SBACV/CBR.</li>
-            <li>Título de Especialista pela Sociedade Brasileira de Angiologia e de Cirurgia Vascular pela SBACV.</li>
-            <li>Área de Atuação em Ecografia Vascular com Doppler pela SBACV/CBR.</li>
-        </ul>
-    </section>
-
-    <footer>
-        &copy; 2026 Mauricio Hiroshi Yamada <br> Maringá - PR
-    </footer>
-</div>
-
-<a href="https://wa.me/5544991297111?text=Ola!%20Consultorio%20do%20Dr.%20Mauricio%20Yamada?%20Poderia%20me%20ajudar?" class="floating-whatsapp" target="_blank" aria-label="Fale conosco no WhatsApp">
-    <svg class="floating-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.804 1.034 3.867 1.58 5.916 1.581h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-</a>
-
-</body>
-</html>
+        <a href="https://www.google.com.br/maps/place/Mauricio+Hiroshi+Yamada+-+Cirurgia+Vascular+e+Est%C3%A9tica+a+Laser/@-23.4298069,-51.9560138,3052m/data=!3m1!1e3!4m6!3m5!1s0x94ecd723c226caeb:0x1b11379f29ae2ac!8m2!3d-23.426329!4d-51.944538!16s%2Fg%2F11clsg7bwr?entry=ttu&g_ep=EgoyMDI2MDEyOC4wIKXMDSoASAFQAw%3D%3D" 
+           class="btn" 
+           target="_blank" 
+           rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 1
