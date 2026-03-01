@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/api/whatsapp-notify", "destination": "/api/whatsapp-notify" }
+  ]
+}
