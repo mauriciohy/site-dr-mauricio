@@ -3,14 +3,21 @@
     <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Dr. Mauricio Hiroshi Yamada | Especialista em Varizes em Maringá</title>
-      <meta name="description" content="Angiologista especialista em Tratamento de Varizes a Laser, Espuma, Doppler Vascular e Feridas em Maringá. Agende sua avaliação. CRM-PR 21589.">
+          <title>Angiologista em Maringá | Dr. Mauricio Yamada - Varizes a Laser, Espuma e Doppler</title>
+      <meta name="description" content="Angiologista e Cirurgião Vascular em Maringá. Tratamento de varizes a laser, espuma, escleroterapia, doppler vascular. 4.9★ Google (261 avaliações). Agende pelo WhatsApp.">
       <meta name="theme-color" content="#0a192f">
       <meta name="robots" content="index, follow">
     
       <!-- Canonical -->
       <link rel="canonical" href="https://www.mauricioyamada.med.br/">
     
+      <!-- Preload LCP -->
+      <link rel="preload" href="logo.webp" as="image" type="image/webp">
+
+      <!-- DNS Prefetch (tracking carregado depois) -->
+      <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+      <link rel="dns-prefetch" href="https://connect.facebook.net">
+
       <!-- Favicon -->
       <link rel="icon" type="image/x-icon" href="favicon.ico">
       <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -21,15 +28,15 @@
       <!-- Open Graph / Facebook -->
       <meta property="og:type" content="website">
       <meta property="og:url" content="https://www.mauricioyamada.med.br/">
-      <meta property="og:title" content="Dr. Mauricio Hiroshi Yamada | Especialista em Varizes em Maringá">
-      <meta property="og:description" content="Angiologista especialista em Tratamento de Varizes a Laser, Espuma, Doppler Vascular e Feridas em Maringá. Agende sua avaliação.">
+      <meta property="og:title" content="Angiologista em Maringá | Dr. Mauricio Yamada - Varizes a Laser, Espuma e Doppler">
+      <meta property="og:description" content="Angiologista e Cirurgião Vascular em Maringá. Tratamento de varizes a laser, espuma, escleroterapia, doppler vascular. 4.9★ Google. Agende pelo WhatsApp.">
       <meta property="og:image" content="https://www.mauricioyamada.med.br/foto.webp">
       <meta property="og:locale" content="pt_BR">
     
       <!-- Twitter Card -->
       <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:title" content="Dr. Mauricio Hiroshi Yamada | Especialista em Varizes em Maringá">
-      <meta name="twitter:description" content="Angiologista especialista em Tratamento de Varizes a Laser, Espuma, Doppler Vascular e Feridas em Maringá.">
+      <meta name="twitter:title" content="Angiologista em Maringá | Dr. Mauricio Yamada - Varizes a Laser, Espuma e Doppler">
+      <meta name="twitter:description" content="Angiologista e Cirurgião Vascular em Maringá. Tratamento de varizes a laser, espuma, escleroterapia, doppler vascular.">
       <meta name="twitter:image" content="https://www.mauricioyamada.med.br/foto.webp">
     
       <style>
@@ -41,6 +48,7 @@
                         --text: #334155;
                         --light-gray: #f8fafc;
                         --border: #e2e8f0;
+                        --success: #059669;
               }
               * {
                         margin: 0;
@@ -54,158 +62,189 @@
                         color: var(--text);
                         display: flex;
                         justify-content: center;
-                        padding: 20px;
+                        padding: 0;
               }
               .container {
                         width: 100%;
-                        max-width: 420px;
+                        max-width: 480px;
                         text-align: center;
-                        padding-bottom: 70px;
+                        padding-bottom: 80px;
+              }
+
+              /* ===== HEADER ===== */
+              header {
+                        padding: 20px 20px 0;
+                        margin-bottom: 0;
               }
               .logo {
-                        width: 110px;
+                        width: 100px;
                         height: auto;
-                        margin: 10px auto 15px auto;
+                        margin: 0 auto 14px auto;
                         display: block;
               }
-              header { margin-bottom: 25px; }
-              h1 {
-                        font-size: 1.3rem;
+              .header-profile {
+                        display: flex;
+                        align-items: center;
+                        gap: 14px;
+                        text-align: left;
+                        margin-bottom: 16px;
+              }
+              .header-pic {
+                        width: 80px;
+                        height: 80px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        flex-shrink: 0;
+                        border: 3px solid var(--accent);
+                        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+              }
+              .header-info h1 {
+                        font-size: 1rem;
                         color: var(--primary);
                         font-weight: 800;
-                        margin-bottom: 4px;
                         line-height: 1.2;
-              }
-              h1 span {
-                        display: block;
-                        font-size: 1.1rem;
-                        color: var(--accent);
-                        font-weight: 700;
-                        margin-top: 5px;
+                        margin-bottom: 3px;
               }
               .crm {
-                        font-size: 0.7rem;
+                        font-size: 0.62rem;
                         text-transform: uppercase;
-                        letter-spacing: 0.5px;
+                        letter-spacing: 0.3px;
                         color: #64748b;
                         font-weight: 600;
                         display: block;
-                        margin-bottom: 12px;
-                        margin-top: 8px;
+                        margin-bottom: 6px;
               }
-              .tag {
-                        background: #f1f5f9;
-                        padding: 8px 16px;
-                        border-radius: 20px;
-                        font-size: 0.85rem;
+              .spec-tags {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 4px;
+              }
+              .spec-tag {
+                        background: #eff6ff;
+                        border: 1px solid #bfdbfe;
                         color: var(--accent);
+                        font-size: 0.62rem;
                         font-weight: 700;
+                        padding: 3px 8px;
+                        border-radius: 12px;
+                        white-space: nowrap;
+              }
+
+              /* ===== HERO ===== */
+              .hero {
+                        background: linear-gradient(135deg, #0a192f 0%, #1e3a8a 100%);
+                        color: white;
+                        padding: 24px 20px 28px;
+                        position: relative;
+              }
+              .hero::after {
+                        content: '';
+                        position: absolute;
+                        bottom: -20px;
+                        left: 0;
+                        right: 0;
+                        height: 20px;
+                        background: linear-gradient(135deg, #0a192f 0%, #1e3a8a 100%);
+                        clip-path: ellipse(55% 100% at 50% 0%);
+              }
+              .hero-badge {
                         display: inline-block;
-                        border: 1px solid var(--border);
-                        line-height: 1.4;
+                        background: rgba(255,255,255,0.15);
+                        border: 1px solid rgba(255,255,255,0.25);
+                        padding: 5px 14px;
+                        border-radius: 20px;
+                        font-size: 0.7rem;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                        margin-bottom: 14px;
               }
-              .links-group {
-                        margin-top: 25px;
-                        display: grid;
-                        gap: 12px;
+              .hero h2 {
+                        font-size: 1.35rem;
+                        font-weight: 800;
+                        line-height: 1.25;
+                        margin-bottom: 10px;
               }
-              .btn {
+              .hero h2 em {
+                        font-style: normal;
+                        color: #93c5fd;
+              }
+              .hero-sub {
+                        font-size: 0.88rem;
+                        opacity: 0.9;
+                        line-height: 1.5;
+                        margin-bottom: 18px;
+              }
+              .hero-stats {
+                        display: flex;
+                        justify-content: center;
+                        gap: 20px;
+              }
+              .hero-stat { text-align: center; }
+              .hero-stat strong {
+                        display: block;
+                        font-size: 1.3rem;
+                        font-weight: 800;
+                        color: #93c5fd;
+              }
+              .hero-stat span {
+                        font-size: 0.65rem;
+                        opacity: 0.8;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+              }
+
+              /* ===== CONTENT ===== */
+              .content { padding: 0 20px; }
+
+              /* ===== CTA ===== */
+              .cta-block { margin: 30px 0 24px; }
+              .cta-main {
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        padding: 16px;
-                        border-radius: 12px;
+                        width: 100%;
+                        padding: 18px 20px;
+                        border-radius: 14px;
                         text-decoration: none;
-                        font-weight: 600;
-                        font-size: 1rem;
-                        transition: transform 0.1s ease, background 0.2s;
-                        border: 1px solid var(--border);
-                        background: #f8fafc;
-                        color: var(--primary);
-              }
-              .btn svg {
-                        width: 20px;
-                        height: 20px;
-                        margin-right: 10px;
-                        fill: currentColor;
-              }
-              .btn-main {
+                        font-weight: 700;
+                        font-size: 1.05rem;
                         background-color: var(--whatsapp);
                         color: white;
                         border: none;
-                        box-shadow: 0 4px 15px rgba(29, 168, 81, 0.3);
-                        animation: pulse 2s infinite;
+                        box-shadow: 0 6px 20px rgba(29, 168, 81, 0.35);
+                        animation: pulse 2.5s infinite;
                         will-change: transform;
+                        gap: 10px;
+                        line-height: 1.2;
+                        touch-action: manipulation;
               }
-              .btn-main svg { fill: white; }
+              .cta-main svg {
+                        width: 24px;
+                        height: 24px;
+                        fill: white;
+                        flex-shrink: 0;
+              }
               @keyframes pulse {
                         0%   { transform: scale(1); }
-                        50%  { transform: scale(1.03); }
+                        50%  { transform: scale(1.025); }
                         100% { transform: scale(1); }
               }
-              .profile-pic {
-                        width: 160px;
-                        height: auto;
-                        display: block;
-                        margin: 35px auto 20px auto;
-                        border-radius: 8px;
-                        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+              .cta-hint {
+                        font-size: 0.72rem;
+                        color: #64748b;
+                        margin-top: 8px;
               }
-              .info-section {
-                        text-align: left;
-                        background: var(--light-gray);
-                        padding: 20px;
-                        border-radius: 12px;
-                        border: 1px solid var(--border);
-              }
-              .info-section h3 {
-                        font-size: 0.9rem;
-                        color: var(--primary);
-                        margin-bottom: 12px;
-                        text-transform: uppercase;
-                        border-bottom: 1px solid #cbd5e1;
-                        padding-bottom: 6px;
-                        letter-spacing: 0.5px;
-                        font-weight: 700;
-              }
-              #tratamentos { background-color: #f9f9f9; }
-              #tratamentos h2 {
-                        font-size: 1.1rem;
-                        color: var(--accent);
-                        margin-bottom: 15px;
-                        border-bottom: 2px solid var(--accent);
-                        padding-bottom: 5px;
-              }
-              #tratamentos p {
-                        color: var(--text);
-                        line-height: 1.6;
-                        margin-bottom: 15px;
-                        font-size: 0.9rem;
-              }
-              .info-list {
-                        list-style: none;
-                        font-size: 0.85rem;
-                        line-height: 1.6;
-                        color: var(--text);
-              }
-              .info-list li {
-                        margin-bottom: 6px;
-                        padding-left: 15px;
-                        position: relative;
-              }
-              .info-list li::before {
-                        content: "\2022";
-                        color: var(--accent);
-                        position: absolute;
-                        left: 0;
-                        font-weight: bold;
-              }
+              .cta-hint strong { color: var(--success); }
+
+              /* ===== REVIEWS ===== */
               .reviews-section {
                         background: linear-gradient(135deg, #fff7ed, #fffbeb);
                         border: 1px solid #fed7aa;
-                        border-radius: 12px;
+                        border-radius: 14px;
                         padding: 20px;
                         text-align: center;
+                        margin-bottom: 20px;
               }
               .reviews-header {
                         display: flex;
@@ -216,29 +255,29 @@
               }
               .reviews-header svg { width: 20px; height: 20px; }
               .reviews-header span {
-                        font-size: 0.8rem;
+                        font-size: 0.75rem;
                         font-weight: 600;
                         color: #57534e;
                         text-transform: uppercase;
                         letter-spacing: 0.5px;
               }
               .reviews-score {
-                        font-size: 2.2rem;
+                        font-size: 2rem;
                         font-weight: 800;
                         color: var(--primary);
                         line-height: 1;
-                        margin: 8px 0 4px 0;
+                        margin: 6px 0 2px 0;
               }
               .reviews-stars {
                         color: #b45309;
-                        font-size: 1.3rem;
+                        font-size: 1.2rem;
                         letter-spacing: 2px;
                         margin-bottom: 4px;
               }
               .reviews-count {
-                        font-size: 0.8rem;
+                        font-size: 0.78rem;
                         color: #57534e;
-                        margin-bottom: 16px;
+                        margin-bottom: 14px;
               }
               .review-card {
                         background: white;
@@ -247,48 +286,161 @@
                         margin-bottom: 10px;
                         text-align: left;
                         border: 1px solid #f3e8d0;
-                        font-size: 0.82rem;
+                        font-size: 0.8rem;
                         line-height: 1.5;
                         color: var(--text);
               }
               .review-card:last-child { margin-bottom: 0; }
               .review-card .review-stars {
                         color: #b45309;
-                        font-size: 0.75rem;
-                        margin-bottom: 6px;
+                        font-size: 0.7rem;
+                        margin-bottom: 4px;
                         letter-spacing: 1px;
+              }
+              .review-card .review-tag {
+                        display: inline-block;
+                        background: #dbeafe;
+                        color: var(--accent);
+                        font-size: 0.65rem;
+                        font-weight: 700;
+                        padding: 2px 8px;
+                        border-radius: 10px;
+                        margin-bottom: 6px;
+                        text-transform: uppercase;
+                        letter-spacing: 0.3px;
               }
               .review-card p { margin: 0; }
               .reviews-cta {
                         display: inline-block;
-                        margin-top: 14px;
-                        font-size: 0.82rem;
+                        margin-top: 12px;
+                        font-size: 0.8rem;
                         color: var(--accent);
                         text-decoration: none;
                         font-weight: 600;
               }
-              .reviews-cta:hover { text-decoration: underline; }
-              .convenios-box {
+
+              /* ===== TRATAMENTOS ===== */
+              .section-title {
+                        font-size: 1.05rem;
+                        color: var(--primary);
+                        font-weight: 800;
+                        margin-bottom: 16px;
+                        line-height: 1.3;
+              }
+              .tratamentos-section {
+                        text-align: left;
+                        background: var(--light-gray);
+                        padding: 20px;
+                        border-radius: 14px;
+                        border: 1px solid var(--border);
+                        margin-bottom: 20px;
+              }
+              .tratamentos-section p {
+                        color: var(--text);
+                        line-height: 1.6;
+                        margin-bottom: 15px;
                         font-size: 0.85rem;
+              }
+              .info-list {
+                        list-style: none;
+                        font-size: 0.85rem;
+                        line-height: 1.7;
+                        color: var(--text);
+              }
+              .info-list li {
+                        margin-bottom: 6px;
+                        padding-left: 24px;
+                        position: relative;
+              }
+              .info-list li::before {
+                        content: "\2713";
+                        color: var(--success);
+                        position: absolute;
+                        left: 0;
+                        font-weight: 800;
+              }
+
+              /* ===== CONVÊNIOS ===== */
+              .convenios-box {
                         background: #e0f2fe;
-                        padding: 10px;
-                        border-radius: 8px;
+                        border: 1px solid #bae6fd;
+                        border-radius: 12px;
+                        padding: 14px 16px;
+                        font-size: 0.82rem;
                         color: #0c4a6e;
                         font-weight: 500;
-                        margin-top: 10px;
+                        margin-bottom: 20px;
+                        text-align: center;
+                        line-height: 1.5;
               }
-              .location-info {
-                        font-size: 0.9rem;
-                        color: #334155;
-                        margin-top: 20px;
-                        border-top: 1px solid #e2e8f0;
-                        padding-top: 15px;
-              }
-              footer {
-                        margin-top: 40px;
+              .convenios-box strong {
+                        display: block;
+                        margin-bottom: 4px;
                         font-size: 0.75rem;
-                        color: #6b7280;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
               }
+
+              /* ===== QUALIFICAÇÕES ===== */
+              .qualificacoes-section {
+                        text-align: left;
+                        background: var(--light-gray);
+                        padding: 20px;
+                        border-radius: 14px;
+                        border: 1px solid var(--border);
+                        margin-bottom: 20px;
+              }
+              .qualificacoes-list {
+                        list-style: none;
+                        font-size: 0.8rem;
+                        color: var(--text);
+                        line-height: 1.6;
+              }
+              .qualificacoes-list li {
+                        padding-left: 20px;
+                        position: relative;
+                        margin-bottom: 5px;
+              }
+              .qualificacoes-list li::before {
+                        content: "\2713";
+                        position: absolute;
+                        left: 0;
+                        font-weight: 800;
+                        color: var(--accent);
+              }
+
+              /* ===== BOTÕES SECUNDÁRIOS ===== */
+              .btn {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 14px;
+                        border-radius: 12px;
+                        text-decoration: none;
+                        font-weight: 600;
+                        font-size: 0.9rem;
+                        border: 1px solid var(--border);
+                        background: #f8fafc;
+                        color: var(--primary);
+                        margin-bottom: 12px;
+                        gap: 8px;
+              }
+              .btn svg {
+                        width: 18px;
+                        height: 18px;
+                        fill: currentColor;
+              }
+
+              /* ===== FOOTER ===== */
+              footer {
+                        margin-top: 10px;
+                        padding: 20px;
+                        font-size: 0.7rem;
+                        color: #94a3b8;
+                        line-height: 1.5;
+              }
+
+              /* ===== FLOATING WHATSAPP ===== */
               .floating-whatsapp {
                         position: fixed;
                         bottom: 25px;
@@ -301,9 +453,13 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                        box-shadow: 0 4px 16px rgba(0,0,0,0.3);
                         z-index: 1000;
+                        text-decoration: none;
+                        touch-action: manipulation;
               }
+
+              /* ===== SR ONLY ===== */
               .sr-only {
                         position: absolute;
                         width: 1px;
@@ -315,115 +471,192 @@
                         white-space: nowrap;
                         border: 0;
               }
+
+              /* ===== PERFORMANCE ===== */
+              .tratamentos-section, .qualificacoes-section, .reviews-section {
+                        content-visibility: auto;
+                        contain-intrinsic-size: auto 300px;
+              }
             </style>
     <!-- Microsoft Clarity -->
     <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","vq25jaento");</script>
     </head>
     <body>
           <div class="container">
+
+                  <!-- ===== HEADER COM FOTO + CREDENCIAIS ===== -->
                   <header>
-                            <img src="logo.webp" alt="Logo Clínica Vascular" class="logo" width="110" height="110">
-                            <h1>
-                                        Angiologista em Maringá - Especialista em Varizes
-                                        <span>Dr. Mauricio Hiroshi Yamada</span>
-                            </h1>
-                        <span class="crm">CRM-PR 21589 | RQE: 18282, 18281, 18295, 18294</span>
-                        <span class="tag">Tratamento de Varizes a Laser e Cirurgia Vascular</span>
+                            <img src="logo.webp" alt="Maringá Vasculares" class="logo" width="100" height="100" fetchpriority="high" decoding="async">
+                            <div class="header-profile">
+                                      <img src="foto.webp"
+                                               alt="Dr. Mauricio Hiroshi Yamada - Angiologista e Cirurgião Vascular em Maringá"
+                                               class="header-pic"
+                                               width="80"
+                                               height="80"
+                                               fetchpriority="high"
+                                               decoding="async">
+                                      <div class="header-info">
+                                                <h1>Dr. Mauricio Hiroshi Yamada<br><small style="font-size:0.75rem;color:var(--accent);font-weight:700;">Angiologista e Cirurgião Vascular em Maringá</small></h1>
+                                                <span class="crm">CRM-PR 21589 | RQE: 18282 &bull; 18281 &bull; 18295 &bull; 18294</span>
+                                                <div class="spec-tags">
+                                                          <span class="spec-tag">Varizes a Laser</span>
+                                                          <span class="spec-tag">Espuma</span>
+                                                          <span class="spec-tag">Doppler Vascular</span>
+                                                          <span class="spec-tag">Escleroterapia</span>
+                                                </div>
+                                      </div>
+                            </div>
                   </header>
-          
+
+                  <!-- ===== HERO ===== -->
+                  <div class="hero" id="varizes">
+                            <span class="hero-badge">Especialista em Varizes</span>
+                            <h2>Tratamento de Varizes em Maringá com <em>Laser, Espuma e Radiofrequência</em></h2>
+                            <p class="hero-sub">Técnicas modernas e minimamente invasivas para varizes, vasinhos e problemas vasculares. Sem internação prolongada, com retorno rápido.</p>
+                            <div class="hero-stats">
+                                      <div class="hero-stat">
+                                                <strong>4.9</strong>
+                                                <span>&#9733; Google</span>
+                                      </div>
+                                      <div class="hero-stat">
+                                                <strong>261</strong>
+                                                <span>Avaliações</span>
+                                      </div>
+                                      <div class="hero-stat">
+                                                <strong>15+</strong>
+                                                <span>Anos experiência</span>
+                                      </div>
+                            </div>
+                  </div>
+
               <main>
-                        <div class="links-group">
+                        <div class="content">
+
+                        <!-- ===== CTA PRINCIPAL ===== -->
+                        <div class="cta-block">
                                     <a id="whatsapp"
                                                    href="https://wa.me/5544991297111?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20vascular%20com%20o%20Dr.%20Mauricio."
-                                                   class="btn btn-main"
+                                                   class="cta-main"
                                                    target="_blank"
                                                    rel="noopener noreferrer"
                                                    onclick="if(typeof trackWhatsAppClick==='function')trackWhatsAppClick('botao_principal');if(typeof gtag==='function'){gtag('event','click_whatsapp',{event_category:'contato',event_label:'botao_principal'});gtag('event','conversion',{send_to:'AW-981205504/whatsapp_click'});}if(typeof fbq==='function')fbq('track','Lead',{content_name:'cirurgia_vascular',content_category:'whatsapp_click',value:0,currency:'BRL'});">
                                                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.804 1.034 3.867 1.58 5.916 1.581h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                                                  Agendar Consulta
+                                                  Agendar Avaliação Vascular
                                     </a>
+                                    <p class="cta-hint">Resposta rápida via WhatsApp &bull; <strong>Atendemos convênios</strong></p>
+                        </div>
 
-                                    <section class="reviews-section" aria-label="Avaliações de pacientes">
-                                                  <h2 class="sr-only">Avaliações de Pacientes</h2>
-                                                  <div class="reviews-header">
-                                                                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z" fill="#4285F4"/></svg>
-                                                                  <span>Avaliações no Google</span>
-                                                  </div>
-                                                  <div class="reviews-score">4.9</div>
-                                                  <div class="reviews-stars" aria-label="4.9 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                                                  <div class="reviews-count">Baseado em <strong>261 avaliações</strong></div>
-                                              <div class="review-card">
-                                                          <div class="review-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                                                          <p>"Ótimo atendimento da clínica, desde a recepção até o Dr. Estão de parabéns! Estou gostando muito do resultado do tratamento."</p>
-                                              </div>
-                                              <div class="review-card">
-                                                          <div class="review-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                                                          <p>"Atendimento perfeito! Fui muito bem atendida desde a recepção até o tratamento final. Toda a equipe está de parabéns, super recomendo."</p>
-                                              </div>
-                                              <div class="review-card">
-                                                          <div class="review-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                                                          <p>"O Dr. Maurício demonstrou grande competência, atenção aos detalhes e um cuidado humanizado que transmite confiança e tranquilidade ao paciente."</p>
-                                              </div>
-                                              <a href="https://share.google/l77J58t2xKzqtN5Mb" target="_blank" rel="noopener noreferrer" class="reviews-cta">Ver todas as 261 avaliações →</a>
-                                    </section>
+                        <!-- ===== REVIEWS ===== -->
+                        <section class="reviews-section" aria-label="Avaliações de pacientes">
+                                    <h2 class="sr-only">Avaliações de Pacientes</h2>
+                                    <div class="reviews-header">
+                                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z" fill="#4285F4"/></svg>
+                                                <span>Avaliações no Google</span>
+                                    </div>
+                                    <div class="reviews-score">4.9</div>
+                                    <div class="reviews-stars" aria-label="4.9 de 5 estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                                    <div class="reviews-count">Baseado em <strong>261 avaliações</strong></div>
+                                    <div class="review-card">
+                                                <div class="review-tag">Varizes</div>
+                                                <div class="review-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                                                <p>"Ótimo atendimento da clínica, desde a recepção até o Dr. Estão de parabéns! Estou gostando muito do resultado do tratamento."</p>
+                                    </div>
+                                    <div class="review-card">
+                                                <div class="review-tag">Escleroterapia</div>
+                                                <div class="review-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                                                <p>"Atendimento perfeito! Fui muito bem atendida desde a recepção até o tratamento final. Toda a equipe está de parabéns, super recomendo."</p>
+                                    </div>
+                                    <div class="review-card">
+                                                <div class="review-tag">Cirurgia Vascular</div>
+                                                <div class="review-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                                                <p>"O Dr. Maurício demonstrou grande competência, atenção aos detalhes e um cuidado humanizado que transmite confiança e tranquilidade ao paciente."</p>
+                                    </div>
+                                    <a href="https://share.google/l77J58t2xKzqtN5Mb" target="_blank" rel="noopener noreferrer" class="reviews-cta">Ver todas as 261 avaliações &rarr;</a>
+                        </section>
                         
-                                <section class="info-section" id="tratamentos">
-                                          <h2>Especialista em Tratamentos Vasculares em Maringá</h2>
-                                          <p>O Dr. Mauricio Hiroshi Yamada oferece soluções avançadas para a saúde vascular, utilizando tecnologia de ponta para resultados estéticos e funcionais:</p>
-                                          <ul class="info-list">
-                                                      <li>✅ <strong>Tratamento de Varizes:</strong> Técnicas modernas com <strong>Laser</strong> e <strong>Espuma</strong> densa.</li>
-                                                      <li>✅ <strong>Escleroterapia:</strong> A famosa "secagem de vasinhos" para pernas livres de marcas.</li>
-                                                      <li>✅ <strong>Consulta com Angiologista:</strong> Check-up vascular completo e prevenção de trombose.</li>
-                                                      <li>✅ <strong>Cirurgia Vascular Estética:</strong> Foco em microvarizes com rápida recuperação.</li>
-                                                      <li>✅ <strong>Doppler Vascular:</strong> Exames precisos para diagnóstico de circulação.</li>
-                                                      <li>✅ <strong>Tratamento de Úlceras:</strong> Cuidado especializado para feridas nas pernas que não cicatrizam.</li>
-                                          </ul>
-                                          <div class="location-info">
-                                                      <p>
-                                                                        <strong>Localizado no centro de Maringá - PR.</strong><br>
-                                                                        Atendimento especializado em Angiologia e Cirurgia Vascular.
-                                                      </p>
-                                                          <p class="convenios-box">
-                                                                            Aceitamos: Particular, Unimed, Amil, Bradesco Saúde, Fundação Copel, Fundação Sanepar, Saúde Caixa e Solumed.
-                                                          </p>
-                                          </div>
-                                </section>
+                        <!-- ===== TRATAMENTOS ===== -->
+                        <section class="tratamentos-section" id="tratamentos" aria-label="Tratamentos">
+                                    <h2 class="section-title">Tratamentos Vasculares em Maringá</h2>
+                                    <p>Soluções avançadas para varizes e saúde vascular com tecnologia de ponta:</p>
+                                    <ul class="info-list">
+                                                <li><strong>Tratamento de Varizes a Laser:</strong> Endolaser para varizes grossas sem cortes.</li>
+                                                <li><strong>Escleroterapia com Espuma:</strong> Seca varizes por dentro, sem cirurgia e sem internação.</li>
+                                                <li><strong>Radiofrequência ClosureFast:</strong> Tecnologia térmica para selar a veia com alta eficácia.</li>
+                                                <li><strong>Escleroterapia (Secagem de Vasinhos):</strong> Tratamento estético para microvasos e telangiectasias.</li>
+                                                <li><strong>Doppler Vascular:</strong> Ultrassom diagnóstico para mapeamento preciso da circulação.</li>
+                                                <li><strong>Consulta com Angiologista:</strong> Check-up vascular completo e prevenção de trombose.</li>
+                                                <li><strong>Tratamento de Úlceras Vasculares:</strong> Cuidado especializado para feridas crônicas nas pernas.</li>
+                                    </ul>
+                        </section>
 
-                                    <a id="localizacao" href="https://g.page/r/CazimvJ5E7EBEBM" class="btn" target="_blank" rel="noopener noreferrer">
-                                                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
-                                                  Como Chegar
+                        <!-- ===== CTA INTERMEDIÁRIO ===== -->
+                        <div class="cta-block" style="margin-top:0;">
+                                    <a id="cta-mid"
+                                                   href="https://wa.me/5544991297111?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20consulta%20vascular%20com%20o%20Dr.%20Mauricio."
+                                                   class="cta-main"
+                                                   target="_blank"
+                                                   rel="noopener noreferrer"
+                                                   onclick="if(typeof trackWhatsAppClick==='function')trackWhatsAppClick('cta_mid');if(typeof gtag==='function'){gtag('event','click_whatsapp',{event_category:'contato',event_label:'cta_mid'});gtag('event','conversion',{send_to:'AW-981205504/whatsapp_click'});}if(typeof fbq==='function')fbq('track','Lead',{content_name:'cirurgia_vascular',content_category:'whatsapp_click',value:0,currency:'BRL'});">
+                                                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.804 1.034 3.867 1.58 5.916 1.581h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                                                  Agendar Consulta pelo WhatsApp
                                     </a>
+                                    <p class="cta-hint">Avaliação com Doppler define a melhor técnica para você</p>
+                        </div>
 
-                                    <a id="blog" href="https://www.maringavasculares.med.br/" class="btn" target="_blank" rel="noopener noreferrer">
-                                                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" fill="currentColor"/></svg>
-                                                  Acessar Blog Educativo
+                        <!-- ===== CONVÊNIOS ===== -->
+                        <div class="convenios-box">
+                                    <strong>Convênios atendidos</strong>
+                                    Unimed &bull; Amil &bull; Bradesco Saúde &bull; Fundação Copel &bull; Fundação Sanepar &bull; Saúde Caixa &bull; Solumed &bull; Particular
+                        </div>
+
+                        <!-- ===== QUALIFICAÇÕES ===== -->
+                        <section class="qualificacoes-section" id="qualificacoes" aria-label="Qualificações">
+                                    <h2 class="section-title">Formação e Qualificações</h2>
+                                    <ul class="qualificacoes-list">
+                                                <li>Graduado em Medicina pela <strong>Universidade Estadual de Londrina (UEL)</strong></li>
+                                                <li>Residência em Cirurgia Vascular e Cirurgia Geral &mdash; <strong>HSPE/SP</strong></li>
+                                                <li>Título de Especialista pela <strong>SBACV</strong></li>
+                                                <li>Ecografia Vascular com Doppler &mdash; <strong>CBR/SBACV</strong></li>
+                                                <li>Angiorradiologia e Cirurgia Endovascular &mdash; <strong>CBR</strong></li>
+                                    </ul>
+                        </section>
+
+                        <!-- ===== LOCALIZAÇÃO ===== -->
+                        <a id="localizacao" href="https://g.page/r/CazimvJ5E7EBEBM" class="btn" target="_blank" rel="noopener noreferrer">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+                                    Av. Nóbrega, 116 &mdash; Zona 04, Maringá-PR
+                        </a>
+
+                        <!-- ===== BLOG ===== -->
+                        <a id="blog" href="https://www.maringavasculares.med.br/" class="btn" target="_blank" rel="noopener noreferrer">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" fill="currentColor"/></svg>
+                                    Blog Educativo &mdash; Artigos sobre Varizes e Saúde Vascular
+                        </a>
+
+                        <!-- ===== CTA FINAL ===== -->
+                        <div class="cta-block">
+                                    <a id="cta-bottom"
+                                                   href="https://wa.me/5544991297111?text=Ol%C3%A1%21%20Quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20vascular%20com%20o%20Dr.%20Mauricio."
+                                                   class="cta-main"
+                                                   target="_blank"
+                                                   rel="noopener noreferrer"
+                                                   onclick="if(typeof trackWhatsAppClick==='function')trackWhatsAppClick('cta_bottom');if(typeof gtag==='function'){gtag('event','click_whatsapp',{event_category:'contato',event_label:'cta_bottom'});gtag('event','conversion',{send_to:'AW-981205504/whatsapp_click'});}if(typeof fbq==='function')fbq('track','Lead',{content_name:'cirurgia_vascular',content_category:'whatsapp_click',value:0,currency:'BRL'});">
+                                                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.804 1.034 3.867 1.58 5.916 1.581h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                                                  Agendar Minha Avaliação Agora
                                     </a>
                         </div>
 
-                        <img src="foto.webp"
-                                       alt="Dr. Mauricio Hiroshi Yamada - Angiologista e Cirurgião Vascular em Maringá"
-                                       class="profile-pic"
-                                       width="160"
-                                       height="160"
-                                       loading="lazy"
-                                       decoding="async">
-
-                        <section class="info-section" id="qualificacoes">
-                                    <h3>Qualificações Médicas</h3>
-                                    <ul class="info-list">
-                                                  <li>Graduado em Medicina pela Universidade Estadual de Londrina (UEL).</li>
-                                              <li>Residência Médica em <strong>Cirurgia Vascular</strong> e Cirurgia Geral pelo HSPE/SP.</li>
-                                              <li>Título de Especialista pela Sociedade Brasileira de Angiologia e de Cirurgia Vascular (SBACV).</li>
-                                              <li>Área de Atuação em <strong>Ecografia Vascular com Doppler</strong>, Angiorradiologia e Cirurgia Endovascular pela CBR/SBACV.</li>
-                                    </ul>
-                        </section>
+                        </div><!-- /content -->
               </main>
           
               <footer>
-                        &copy; 2026 Mauricio Hiroshi Yamada <br> Maringá - PR
+                        &copy; 2026 Maringá Vasculares &bull; Dr. Mauricio H. Yamada<br>
+                        CRM-PR 21589 | RQE: 18282, 18281, 18295, 18294<br>
+                        Av. Nóbrega, 116 &mdash; Zona 04, Maringá-PR
               </footer>
           </div>
 
+          <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
           <a href="https://wa.me/5544991297111?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20vascular%20com%20o%20Dr.%20Mauricio."
                    class="floating-whatsapp"
                    target="_blank"
@@ -433,10 +666,12 @@
                   <svg style="width:32px;height:32px;fill:white;" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.804 1.034 3.867 1.58 5.916 1.581h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
           </a>
 
+          <!-- ===== STRUCTURED DATA ===== -->
           <script type="application/ld+json">
-                {"@context":"https://schema.org","@type":"Physician","name":"Dr. Mauricio Hiroshi Yamada","description":"Angiologista e Cirurgião Vascular especialista em tratamento de varizes a laser, escleroterapia, doppler vascular e cirurgia vascular estética em Maringá - PR.","image":"https://www.mauricioyamada.med.br/foto.webp","url":"https://www.mauricioyamada.med.br/","telephone":"+55-44-99129-7111","medicalSpecialty":["Angiologia","Cirurgia Vascular","Ecografia Vascular com Doppler"],"address":{"@type":"PostalAddress","streetAddress":"Av. Nóbrega, 116 - Zona 04","addressLocality":"Maringá","addressRegion":"PR","postalCode":"87014-180","addressCountry":"BR"},"geo":{"@type":"GeoCoordinates","latitude":-23.426329,"longitude":-51.944538},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],"opens":"08:00","closes":"12:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],"opens":"13:30","closes":"18:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"08:00","closes":"12:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"13:30","closes":"17:00"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","bestRating":"5","ratingCount":"261"},"alumniOf":[{"@type":"EducationalOrganization","name":"Universidade Estadual de Londrina (UEL)"},{"@type":"EducationalOrganization","name":"Hospital do Servidor Público Estadual de São Paulo (HSPE/SP)"}],"memberOf":{"@type":"MedicalOrganization","name":"Sociedade Brasileira de Angiologia e de Cirurgia Vascular (SBACV)"},"identifier":{"@type":"PropertyValue","name":"CRM-PR","value":"21589"},"availableService":[{"@type":"MedicalProcedure","name":"Tratamento de Varizes a Laser"},{"@type":"MedicalProcedure","name":"Escleroterapia"},{"@type":"MedicalProcedure","name":"Doppler Vascular"},{"@type":"MedicalProcedure","name":"Cirurgia Vascular Estética"},{"@type":"MedicalProcedure","name":"Tratamento de Úlceras Vasculares"}],"sameAs":["https://www.maringavasculares.med.br/","https://www.linkedin.com/in/mauricio-hiroshi-yamada-647a1336/","https://g.page/r/CazimvJ5E7EBEBM"]}
+                {"@context":"https://schema.org","@type":"Physician","name":"Dr. Mauricio Hiroshi Yamada","description":"Angiologista e Cirurgião Vascular especialista em tratamento de varizes a laser, escleroterapia com espuma, radiofrequência, doppler vascular e cirurgia vascular estética em Maringá - PR.","image":"https://www.mauricioyamada.med.br/foto.webp","url":"https://www.mauricioyamada.med.br/","telephone":"+55-44-99129-7111","medicalSpecialty":["Angiologia","Cirurgia Vascular","Ecografia Vascular com Doppler"],"address":{"@type":"PostalAddress","streetAddress":"Av. Nóbrega, 116 - Zona 04","addressLocality":"Maringá","addressRegion":"PR","postalCode":"87014-180","addressCountry":"BR"},"geo":{"@type":"GeoCoordinates","latitude":-23.426329,"longitude":-51.944538},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],"opens":"08:00","closes":"12:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],"opens":"13:30","closes":"18:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"08:00","closes":"12:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"13:30","closes":"17:00"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","bestRating":"5","ratingCount":"261"},"alumniOf":[{"@type":"EducationalOrganization","name":"Universidade Estadual de Londrina (UEL)"},{"@type":"EducationalOrganization","name":"Hospital do Servidor Público Estadual de São Paulo (HSPE/SP)"}],"memberOf":{"@type":"MedicalOrganization","name":"Sociedade Brasileira de Angiologia e de Cirurgia Vascular (SBACV)"},"identifier":{"@type":"PropertyValue","name":"CRM-PR","value":"21589"},"availableService":[{"@type":"MedicalProcedure","name":"Tratamento de Varizes a Laser"},{"@type":"MedicalProcedure","name":"Escleroterapia com Espuma"},{"@type":"MedicalProcedure","name":"Radiofrequência ClosureFast"},{"@type":"MedicalProcedure","name":"Escleroterapia de Vasinhos"},{"@type":"MedicalProcedure","name":"Doppler Vascular"},{"@type":"MedicalProcedure","name":"Cirurgia Vascular Estética"},{"@type":"MedicalProcedure","name":"Tratamento de Úlceras Vasculares"}],"sameAs":["https://www.maringavasculares.med.br/","https://www.linkedin.com/in/mauricio-hiroshi-yamada-647a1336/","https://g.page/r/CazimvJ5E7EBEBM"]}
           </script>
 
+          <!-- ===== TRACKING (GA4 + Google Ads + Meta Pixel) - Lazy loaded ===== -->
           <script>
                   (function(){
                             var loaded=false;
@@ -448,6 +683,7 @@
                                         g.onload=function(){
                                                       window.dataLayer=window.dataLayer||[];
                                                       function gtag(){dataLayer.push(arguments);}
+                                                      window.gtag=gtag;
                                                       gtag('js',new Date());
                                                       gtag('config','G-ZFLB3R64ZY');
                                                       gtag('config','AW-981205504');
