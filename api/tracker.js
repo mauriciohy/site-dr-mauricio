@@ -147,19 +147,10 @@ async function carregarModelo() {
         const res = await sheets.spreadsheets.values.get({
             spreadsheetId: process.env.GOOGLE_SHEET_ID,
             range: 'Modelo Ativo!A:E'
-            // Formato da aba:
-            // Linha 1: header  → versao | precisao | dataAtualizacao | bias_global | (vazio)
-            // Linha 2: metadata → v2.1   | 82        | 2026-05-04      | -1.2        |
-            // Linha 3: header  → site | feature | peso | bias_site | (vazio)
-            // Linha 4+: dados  → Blog | tempo_ativo_segundos | 0.025 | | 
-            //                    Blog | scroll_max_pct       | 0.018 | |
-            //                    ...
-            //                    Blog | __bias__             |       | -1.5 |  ← bias do site
         });
 
         const rows = res.data.values || [];
         if (rows.length < 4) {
-            // Aba existe mas vazia — usa fallback
             console.log('Modelo Ativo vazia, usando fallback');
             _modeloCache = MODELO_FALLBACK;
             _modeloCacheTime = agora;
@@ -184,21 +175,18 @@ async function carregarModelo() {
             }
 
             if (feature === '__bias__') {
-                // Linha especial que guarda o bias do site
                 sites[site].bias = parseFloat(biasSite) || -1.0;
             } else {
                 sites[site].weights[feature] = parseFloat(peso) || 0;
             }
         }
 
-        // Se não tem dados suficientes, usa fallback
         if (Object.keys(sites).length === 0) {
             _modeloCache = MODELO_FALLBACK;
             _modeloCacheTime = agora;
             return _modeloCache;
         }
 
-        // Mescla com fallback para sites faltantes
         const sitesMesclados = { ...MODELO_FALLBACK.sites };
         for (const [site, modelo] of Object.entries(sites)) {
             sitesMesclados[site] = modelo;
@@ -218,7 +206,6 @@ async function carregarModelo() {
 
     } catch (err) {
         console.error('Erro ao carregar modelo do Sheets:', err.message);
-        // Falha silenciosa — usa fallback
         _modeloCache = MODELO_FALLBACK;
         _modeloCacheTime = agora;
         return _modeloCache;
@@ -235,7 +222,6 @@ function resolverSiteKey(siteName, modelo) {
 }
 
 function extrairFeatures(data, geo) {
-    // Parse seções — formato: "tratamentos: 44s, qualificacoes: 24s"
     const sections = {};
     try {
         const sv = String(data.sections_viewed || '');
@@ -260,7 +246,9 @@ function extrairFeatures(data, geo) {
     const conexao   = String(data.connection_type || '').toLowerCase();
     const botao     = String(data.whatsapp_button || '').toLowerCase();
     const bateria   = parseFloat(data.battery_level) || 1.0;
-    const regiao    = ['sarandi','paicandu','mandaguari','marialva','astorga','iguaracu'];
+    
+    // CORREÇÃO: Inclusão de cidades com acentuação e ipad
+    const regiao    = ['sarandi','paicandu','paiçandu','mandaguari','marialva','astorga','iguaracu','iguaraçu'];
 
     const temChave = (palavras) =>
         palavras.some(p => Object.keys(sections).some(k => k.includes(p)));
@@ -290,7 +278,7 @@ function extrairFeatures(data, geo) {
         estado_parana:  estado.includes('paraná') || estado.includes('parana') ? 1 : 0,
 
         mobile:        dispositivo === 'mobile' ? 1 : 0,
-        ios:           sistema.includes('ios') || sistema.includes('iphone') ? 1 : 0,
+        ios:           sistema.includes('ios') || sistema.includes('iphone') || sistema.includes('ipad') ? 1 : 0,
         touch:         data.is_touch ? 1 : 0,
         conexao_wifi:  conexao.includes('wifi') || conexao.includes('wi-fi') || conexao.includes('4g') ? 1 : 0,
         bateria_baixa: bateria < 0.20 ? 1 : 0,
@@ -302,7 +290,8 @@ function extrairFeatures(data, geo) {
         horario_comercial: hora >= 8 && hora <= 18 ? 1 : 0,
         dia_util:          dia >= 1 && dia <= 5 ? 1 : 0,
 
-        google_ads:       fonte.includes('google ads') ? 1 : 0,
+        // CORREÇÃO: Adicionado cpc e ipad para bater perfeitamente com o Google Sheets
+        google_ads:       fonte.includes('google ads') || fonte.includes('cpc') ? 1 : 0,
         organico:         fonte.includes('orgânico') || fonte.includes('organico') ? 1 : 0,
         direct:           fonte.includes('direto') || fonte.includes('direct') ? 1 : 0,
         fbclid:           String(data.fbclid || '').length > 5 ? 1 : 0,
@@ -336,14 +325,15 @@ const TRADUCOES = {
 
 async function calcularScoreML(data, geo, siteName) {
     try {
-        // Carrega modelo do Sheets (automático, cache 15 min)
         const modelo = await carregarModelo();
 
         const siteKey  = resolverSiteKey(siteName, modelo);
         const siteModelo = modelo.sites[siteKey];
         const features = extrairFeatures(data, geo);
 
-        let z = modelo.bias_global + siteModelo.bias;
+        // CORREÇÃO CRÍTICA DO CÁLCULO LOGÍSTICO
+        // z agora recebe apenas o bias do site, exatamente igual ao Sheets
+        let z = siteModelo.bias;
         const contribuicoes = [];
 
         for (const [nome, valor] of Object.entries(features)) {
@@ -360,7 +350,7 @@ async function calcularScoreML(data, geo, siteName) {
         let categoria, urgencia, cor;
         if (score >= 70)      { categoria = 'QUENTE'; urgencia = 'RESPONDER EM MENOS DE 2 MINUTOS'; cor = '#dc2626'; }
         else if (score >= 40) { categoria = 'MORNO';  urgencia = 'Responder em menos de 15 minutos'; cor = '#d97706'; }
-        else                  { categoria = 'FRIO';   urgencia = 'Resposta padrao';                   cor = '#0284c7'; }
+        else                  { categoria = 'FRIO';   urgencia = 'Resposta padrao';                  cor = '#0284c7'; }
 
         contribuicoes.sort((a, b) => Math.abs(b.contribuicao) - Math.abs(a.contribuicao));
         const topRazoes = contribuicoes.slice(0, 3).map(c => TRADUCOES[c.feature] || c.feature);
@@ -539,17 +529,8 @@ function buildEmailHTML(data, geo, ip, userAgent, ml) {
         hour: '2-digit', minute: '2-digit', second: '2-digit'
     });
 
-    // ═══════════════════════════════════════════════════════════════
-    // CORREÇÃO: URL COMPLETA + DOUBLE ENCODING
-    // ═══════════════════════════════════════════════════════════════
-    
-    // Encode duas vezes para sobreviver à decodificação do Gmail
     const sessionSafe = encodeURIComponent(encodeURIComponent(data.session_id || ''));
-    
-    // URL COMPLETA do Google Forms ✅ CONFIGURADO
     const formLink = `https://docs.google.com/forms/d/e/1FAIpQLSdVc-mhz-rjRHKNhuhMUUDr9WRcf9dGqfa5o7qpgKt_O73qWQ/viewform?usp=pp_url&entry.1112604337=${sessionSafe}`;
-    
-    // ═══════════════════════════════════════════════════════════════
 
     const corFundo  = ml.score >= 70 ? '#fff5f5' : ml.score >= 40 ? '#fffbeb' : '#f0f9ff';
 
@@ -725,8 +706,8 @@ module.exports = async function handler(req, res) {
 
                 await transporter.sendMail({
                     from:    `"Maringa Vasculares - Sistema ML" <${process.env.GMAIL_USER}>`,
-                    to:      'msvasculares@gmail.com',
-                    cc:      'mauriciohy@gmail.com',
+                    to:      'msvasculares@gmail.com', // Secretária
+                    cc:      'mauriciohy@gmail.com',   // Você em cópia
                     subject: `[${ml.categoria}] Lead ${ml.score}% - ${data.site_name || 'Site'}`,
                     html:    buildEmailHTML(data, geo, ip, userAgent, ml)
                 });
