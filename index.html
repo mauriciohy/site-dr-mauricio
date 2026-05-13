@@ -89,8 +89,9 @@
   .trat-card h3{font-size:0.9rem;color:var(--primary);font-weight:700;margin-bottom:6px;}
   .trat-card p{font-size:0.8rem;color:var(--text);line-height:1.5;margin:0;}
   .content>*:nth-child(5){display:none;}
-  .convenios-box{grid-column:1;margin-bottom:0;}
-  .qualificacoes-section{grid-column:2;margin-bottom:0;}
+  .convenios-box{grid-column:1/-1;margin-bottom:0;}
+  .qualificacoes-section{grid-column:1/-1;margin-bottom:0;}
+  .qualificacoes-list{display:grid;grid-template-columns:repeat(2,1fr);gap:2px 24px;}
   .content>*:nth-child(8){grid-column:1;margin-bottom:0;}
   .content>*:nth-child(9){grid-column:2;margin-bottom:0;}
   .content>*:nth-child(10){grid-column:1/-1;}
