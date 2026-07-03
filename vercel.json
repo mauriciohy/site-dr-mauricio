@@ -5,7 +5,7 @@
   ],
   "headers": [
     {
-      "source": "/(.*\\.(webp|png|ico|webmanifest))",
+      "source": "/(.*)\\.(webp|png|ico|webmanifest)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
