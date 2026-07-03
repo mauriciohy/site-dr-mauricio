@@ -261,7 +261,7 @@ function extrairFeatures(data, geo) {
     const sistema = String(data.os || '').toLowerCase();
     const conexao = String(data.connection_type || '').toLowerCase();
     const botao = String(data.whatsapp_button || '').toLowerCase();
-    const bateria = parseFloat(data.battery_level) || 1.0;
+    const bateria = (parseFloat(data.battery_level) || 100) / 100;
     
     const regiao = ['sarandi','paicandu','paiçandu','mandaguari','marialva','astorga','iguaracu','iguaraçu'];
 
@@ -717,8 +717,22 @@ function buildEmailHTML(data, geo, ip, userAgent, ml) {
 }
 
 // ===== HANDLER PRINCIPAL =====
+const ALLOWED_ORIGINS = [
+    'https://www.mauricioyamada.med.br',
+    'https://mauricioyamada.med.br',
+    'https://www.mauricioyamada.com.br',
+    'https://mauricioyamada.com.br',
+    'https://www.maringavasculares.med.br',
+    'https://maringavasculares.med.br',
+    'https://espumamaringa.med.br',
+    'https://www.espumamaringa.med.br',
+    'https://dopplermaringa.vercel.app',
+    'https://radiofrequencia.vercel.app'
+];
+
 module.exports = async function handler(req, res) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    const origin = req.headers.origin || '';
+    res.setHeader('Access-Control-Allow-Origin', ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0]);
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
