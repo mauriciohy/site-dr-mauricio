@@ -29,6 +29,7 @@
       <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
       <link rel="dns-prefetch" href="https://connect.facebook.net">
       <link rel="dns-prefetch" href="https://www.clarity.ms">
+      <link rel="dns-prefetch" href="https://bat.bing.net">
 
       
       <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -463,6 +464,20 @@ function fireWA(label){
 
 <script>
 setTimeout(function(){(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","vq25jaento");},3500);
+</script>
+
+<script>
+(function(){
+  var d=false;
+  function loadUET(){
+    if(d)return;d=true;
+    (function(w,d,t,u,o){w[u]=w[u]||[],o.ts=(new Date).getTime();var n=d.createElement(t);n.src="https://bat.bing.net/bat.js?ti="+o.ti+("uetq"!=u?"&q="+u:""),n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&"loaded"!==s&&"complete"!==s||(o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad"),n.onload=n.onreadystatechange=null)};var i=d.getElementsByTagName(t)[0];i.parentNode.insertBefore(n,i)})(window,document,"script","uetq",{ti:"187263306"});
+  }
+  var ev=['scroll','touchstart','click','mousemove','keydown'];
+  function onI(){ev.forEach(function(e){window.removeEventListener(e,onI)});loadUET();}
+  ev.forEach(function(e){window.addEventListener(e,onI,{once:true,passive:true})});
+  setTimeout(loadUET,5000);
+})();
 </script>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Dr. Mauricio Hiroshi Yamada","givenName":"Mauricio","familyName":"Yamada","jobTitle":"Angiologista e Cirurgião Vascular","description":"Médico especialista em Angiologia e Cirurgia Vascular em Maringá-PR. Especialista em tratamento de varizes a laser, escleroterapia com espuma, radiofrequência ClosureFast, Doppler vascular e cirurgia vascular endovascular.","image":"https://www.mauricioyamada.med.br/foto.webp","url":"https://www.mauricioyamada.med.br/","telephone":"+55-44-99129-7111","worksFor":{"@type":"MedicalBusiness","name":"Maringá Vasculares","address":{"@type":"PostalAddress","streetAddress":"Av. Nóbrega, 116 - Zona 04","addressLocality":"Maringá","addressRegion":"PR","postalCode":"87014-180","addressCountry":"BR"}},"identifier":{"@type":"PropertyValue","name":"CRM-PR","value":"21589"},"alumniOf":[{"@type":"EducationalOrganization","name":"Universidade Estadual de Londrina (UEL)"},{"@type":"EducationalOrganization","name":"Hospital do Servidor Público Estadual de São Paulo (HSPE/SP)"}],"memberOf":{"@type":"MedicalOrganization","name":"Sociedade Brasileira de Angiologia e de Cirurgia Vascular (SBACV)"},"hasCredential":[{"@type":"EducationalOccupationalCredential","credentialCategory":"Título de Especialista em Cirurgia Vascular","recognizedBy":{"@type":"MedicalOrganization","name":"SBACV"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"Ecografia Vascular com Doppler","recognizedBy":{"@type":"Organization","name":"CBR/SBACV"}},{"@type":"EducationalOccupationalCredential","credentialCategory":"Angiorradiologia e Cirurgia Endovascular","recognizedBy":{"@type":"Organization","name":"CBR"}}],"knowsAbout":["Varizes","Cirurgia Vascular","Angiologia","Escleroterapia com Espuma","Endolaser Vascular","Doppler Vascular","Radiofrequência ClosureFast","Úlceras Vasculares","Trombose Venosa","Insuficiência Venosa Crônica"],"sameAs":["https://www.maringavasculares.med.br/","https://www.linkedin.com/in/mauricio-hiroshi-yamada-647a1336/","https://g.page/r/CazimvJ5E7EBEBM"]}</script>
