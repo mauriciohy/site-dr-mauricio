@@ -148,11 +148,16 @@
 <script>
 (function(){
   try{var gc=new URLSearchParams(window.location.search).get('gclid');if(gc)sessionStorage.setItem('_gclid',gc);}catch(e){}
+  /* Stub imediato do gtag — precisa existir ANTES do gtag.js carregar.
+     Sem ele, o guard `typeof gtag==='function'` falha e todo clique anterior
+     ao carregamento perde a conversão, silenciosamente. Com o stub, a chamada
+     entra na fila do dataLayer e o gtag.js a processa ao chegar.
+     Não antecipa download nenhum — só cria a fila. */
+  window.dataLayer=window.dataLayer||[];
+  window.gtag=window.gtag||function(){dataLayer.push(arguments);};
   var _loaded=false;
   function _loadGtag(){
     if(_loaded)return;_loaded=true;
-    window.dataLayer=window.dataLayer||[];
-    window.gtag=function(){dataLayer.push(arguments);};
     gtag('js',new Date());
     gtag('config','AW-981205504',{allow_enhanced_conversions:true});
     gtag('config','G-ZFLB3R64ZY',{send_page_view:true});
